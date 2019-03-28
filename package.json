@@ -1,0 +1,22 @@
+{
+  "name": "hrr37-fec-ginger-service",
+  "version": "1.0.0",
+  "description": "FEC Bookshelf app project for HRR37",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrr37-hermes-4/hrr37-FEC-Ginger-service.git"
+  },
+  "author": "Ginger Barham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrr37-hermes-4/hrr37-FEC-Ginger-service/issues"
+  },
+  "homepage": "https://github.com/hrr37-hermes-4/hrr37-FEC-Ginger-service#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
