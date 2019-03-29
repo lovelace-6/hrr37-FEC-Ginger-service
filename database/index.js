@@ -1,21 +1,8 @@
-const Sequelize = require('sequelize');
-const config = require('./config.js');
-const data = require('./dummy_data.js');
+const mysql = require('mysql');
+const config = require('./config');
+const connection = mysql.createConnection(config);
 
-const connect = new Sequelize(config.database, config.user, config.password, {
-  host: 'localhost',
-  dialect: 'mysql'
-});
+connection.connect();
 
-connect
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-
-
-
+console.log('connected');
 
