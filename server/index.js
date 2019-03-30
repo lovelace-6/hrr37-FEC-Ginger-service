@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/authors', (req, res) => {
-  console.log(res)
+
   res.send();
 });
 
