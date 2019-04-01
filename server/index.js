@@ -11,9 +11,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.get('/authors', (req, res) => {
+app.post('/books', (req, res) => {
 
-  res.send();
+})
+
+app.get('/books:id', (req, res) => {
+
 });
 
 app.listen(port, () => console.log(`listening on port ${port}!`))

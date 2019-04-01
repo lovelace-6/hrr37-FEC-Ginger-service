@@ -22,6 +22,19 @@ const addBook = function(value) {
   return search ('INSERT INTO books (title, description, published_year) VALUES (?, ?, ?)', [value.title, value.description, value.published_year])
 }
 
+const getBook = function(value, callback) {
+  connection.query('SELECT * FROM books WHERE id = ?', value, (err, res) => {
+    if(err) {
+      console.log('error')
+    }
+    callback(value)
+  });
+}
+
+const close = function() {
+  connection.end();
+}
+
 module.exports = {
-  addAuthor, addBook
+  addAuthor, addBook, getBook, close
 }
