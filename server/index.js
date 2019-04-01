@@ -15,8 +15,9 @@ app.post('/books', (req, res) => {
 
 })
 
-app.get('/books:id', (req, res) => {
-
+app.get('/books/:id', async (req, res) => {
+  const book = await db.getBook(req.params.id);
+  res.json(book);
 });
 
 app.listen(port, () => console.log(`listening on port ${port}!`))
