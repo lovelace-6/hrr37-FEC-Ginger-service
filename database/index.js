@@ -14,12 +14,8 @@ const search = (search, values) => {
   })
 };
 
-const addAuthor = function(value) {
-  return search ('INSERT INTO authors (name, details) VALUES (?, ?)', [value.name, value.details])
-}
-
 const addBook = function(value) {
-  return search ('INSERT INTO books (title, description, published_year) VALUES (?, ?, ?)', [value.title, value.description, value.published_year])
+  return search ('INSERT INTO books (title, author, author_details, description, published_year) VALUES (?, ?, ?, ?, ?)', [value.title, value.author, value.author_details, value.description, value.published_year])
 }
 
 const getBook = function(id) {
@@ -31,5 +27,5 @@ const close = function() {
 }
 
 module.exports = {
-  addAuthor, addBook, getBook, close
+  addBook, getBook, close
 }
