@@ -25,6 +25,8 @@ class Author extends React.Component {
         {this.state.authors.map(item => {
           return <div>
             <h2>About {item.author}</h2>
+            <h3>{item.author}</h3>
+            <button>Follow Author</button>
             <p>{item.author_details}</p>
           </div>
         })}
