@@ -1,4 +1,5 @@
 const express = require('express');
+
 const app = express();
 const port = 3000;
 const path = require('path');
@@ -7,14 +8,12 @@ const db = require('../database/index.js');
 
 app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({extended: false}));
-console.log(path.join(__dirname, '../client/dist'))
-app.use('/books/:id', express.static(path.join(__dirname, '../public')));
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/books/:id/author', express.static(path.join(__dirname, '../public')));
 
 app.get('/books/:id', async (req, res) => {
   const book = await db.getBook(req.params.id);
   res.json(book);
 });
 
-app.listen(port, () => console.log(`listening on port ${port}!`))
+app.listen(port, () => console.log(`listening on port ${port}!`));
