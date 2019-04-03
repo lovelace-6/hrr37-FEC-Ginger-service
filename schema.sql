@@ -15,6 +15,6 @@ CREATE TABLE IF NOT EXISTS authors (
   id int NOT NULL AUTO_INCREMENT,
   name varchar (50) NOT NULL,
   details varchar(2000) NOT NULL,
-  profile_pic varchar (50) NOT NULL,
+  profile_pic varchar (1000) NOT NULL,
   PRIMARY KEY (ID)
 );

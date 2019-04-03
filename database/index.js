@@ -20,7 +20,7 @@ const addBook = function (value) {
 };
 
 const addAuthor = function(value) {
-  return search('INSERT INTO authors (name, details) VALUES (?, ?)', [value.name, value.details]);
+  return search('INSERT INTO authors (name, details, profile_pic) VALUES (?, ?, ?)', [value.name, value.details, value.profile_pic]);
 };
 
 const getBook = function (id) {
