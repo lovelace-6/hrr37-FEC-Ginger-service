@@ -25,6 +25,7 @@ class Author extends React.Component {
           console.log(item)
           return <div>
             <h2>About {item.name}</h2>
+            <img src={item.profile_pic}></img>
             <h3>{item.name}</h3>
             <button>Follow Author</button>
             <p>{item.details}</p>
