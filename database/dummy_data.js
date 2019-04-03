@@ -1,26 +1,21 @@
 const faker = require('faker');
+const sdk = require('aws-sdk');
+const config = require('../database/s3config.js')
 
-<<<<<<< Updated upstream
-let name = faker.name.findName;
-let details = faker.lorem.paragraphs;
-let title = faker.commerce.productName;
-let description = faker.lorem.paragraphs;
-let year = faker.random.number;
-let profilePic = faker.image.avatar;
+const s3 = new sdk.S3({
+  region: 'us-west-2',
+  accessKeyId: config.accessKeyID,
+  secretAccessKey: config.secretAccessKey
+});
 
-module.exports = {
-  name, details, title, description, year, profilePic
-}
-=======
 const name = faker.name.findName;
 const details = faker.lorem.paragraphs;
 const title = faker.commerce.productName;
 const description = faker.lorem.paragraphs;
 const year = faker.random.number;
 const profilePic = faker.image.avatar;
-const author_id = faker.random.number;
+
 
 module.exports = {
-  name, details, title, description, year, profilePic, author_id
+  name, details, title, description, year, profilePic
 };
->>>>>>> Stashed changes
