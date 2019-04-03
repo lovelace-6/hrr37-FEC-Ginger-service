@@ -8,7 +8,7 @@ class Author extends React.Component {
     }
   }
   componentDidMount() {
-    fetch('http://127.0.0.1:3000/books/1')
+    fetch('http://127.0.0.1:3000/books/1/authors/1')
     .then((res) => {
       return res.json();
     })
@@ -22,11 +22,12 @@ class Author extends React.Component {
     return (
       <div className="author">
         {this.state.authors.map(item => {
+          console.log(item)
           return <div>
-            <h2>About {item.author}</h2>
-            <h3>{item.author}</h3>
+            <h2>About {item.name}</h2>
+            <h3>{item.name}</h3>
             <button>Follow Author</button>
-            <p>{item.author_details}</p>
+            <p>{item.details}</p>
           </div>
         })}
       </div>
