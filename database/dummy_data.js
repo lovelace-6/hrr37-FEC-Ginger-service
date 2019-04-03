@@ -1,11 +1,14 @@
-var faker = require('faker');
+const faker = require('faker');
 
-var name = faker.name.findName();
+const name = faker.name.findName;
+const details = faker.lorem.paragraphs;
+const title = faker.commerce.productName;
+const description = faker.lorem.paragraphs;
+const year = faker.random.number;
+const author_id = faker.random.number;
+const profilePic = 'http://d37pd3xfja253q.cloudfront.net/authors/sample-image-'
 
-var details = faker.lorem.paragraphs();
-
-var title = faker.commerce.productName();
 
 module.exports = {
-  name, details, title
-}
+  name, details, title, description, year, profilePic, author_id
+};

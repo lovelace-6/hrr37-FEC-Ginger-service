@@ -1,10 +1,12 @@
 {
   "name": "hrr37-fec-ginger-service",
   "version": "1.0.0",
-  "description": "* __Note:__ Nodemon should be installed globally. * Open a terminal instance for every service and one for the proxy. * Run 'npm install' for every service and the proxy. * Run 'npm run build' for every service to create a bundle.js file. * Run 'npm start' for every service and the proxy. * In a browser navigate to localhost:3000",
+  "description": "FEC service bookshelf",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --watch --config ./webpack.config.js --mode development"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --watch --config ./webpack.config.js --mode development",
+    "seed": "mysql -u root < schema.sql && node database/seed.js"
   },
   "repository": {
     "type": "git",
@@ -16,24 +18,27 @@
     "url": "https://github.com/hrr37-hermes-4/hrr37-FEC-Ginger-service/issues"
   },
   "homepage": "https://github.com/hrr37-hermes-4/hrr37-FEC-Ginger-service#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "cli": "^1.0.1",
-    "faker": "^4.1.0",
-    "mysql": "^2.16.0",
-    "mysql2": "^1.6.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "sequelize": "^5.2.3",
-    "sequelize-cli": "^5.4.0"
-  },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "mysql": "^2.16.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0"
   }
 }
