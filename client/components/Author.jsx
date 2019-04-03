@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Author extends React.Component {
   constructor(props) {
@@ -21,7 +20,7 @@ class Author extends React.Component {
   }
   render() {
     return (
-      <div className="author-details">
+      <div className="author">
         {this.state.authors.map(item => {
           return <div>
             <h2>About {item.author}</h2>
