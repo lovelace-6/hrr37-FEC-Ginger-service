@@ -12,8 +12,8 @@ const createBook = () => {
 const createAuthor = () => {
   for (let i = 0; i < 50; i++) {
     db.addAuthor({
-      name: data.name(), details: data.details()
-    })
+      name: data.name(), details: data.details(), profile_pic: data.profilePic() + data.author_id({min: 1, max: 3}) + '.jpg'
+    });
   }
 }
 
