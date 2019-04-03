@@ -16,7 +16,11 @@ const search = (search, values) => new Promise((resolve, reject) => {
 });
 
 const addBook = function (value) {
-  return search('INSERT INTO books (title, author, author_details, description, published_year) VALUES (?, ?, ?, ?, ?)', [value.title, value.author, value.author_details, value.description, value.published_year]);
+  return search('INSERT INTO books (title, description, author_id, published_year) VALUES (?, ?, ?, ?)', [value.title, value.description, value.author_id, value.published_year]);
+};
+
+const addAuthor = function(value) {
+  return search('INSERT INTO authors (name, details) VALUES (?, ?)', [value.name, value.details]);
 };
 
 const getBook = function (id) {
@@ -28,5 +32,5 @@ const close = function () {
 };
 
 module.exports = {
-  addBook, getBook, close,
+  addBook, getBook, close, addAuthor
 };
