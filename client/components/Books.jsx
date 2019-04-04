@@ -1,15 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import ToolTip from '../components/ToolTip.jsx';
 
 const BookCover = styled.img`
   width: 50px;
+`;
+
+const BookContainer = styled.div`
+  display: inline;
 `;
 
 class Books extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      displayToolTip: false
     }
   }
   componentDidMount() {
@@ -21,14 +27,19 @@ class Books extends React.Component {
         });
       });
   }
+
+
   render() {
     return (
       <div>
         {this.state.books.map(item => {
           return (
+            <BookContainer>
             <BookCover src={item.cover} />
+            </BookContainer>
           )
         })}
+        <ToolTip />
       </div>
     )
   }
