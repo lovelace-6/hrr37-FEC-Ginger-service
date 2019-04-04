@@ -57,51 +57,56 @@ const Button = styled.button`
   }
 `;
 
+const Details = styled.p`
+  font-family: lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+`;
+
 class Author extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      authors: []
-    }
+      authors: [],
+    };
   }
 
   componentDidMount() {
     fetch('http://127.0.0.1:3000/books/1/authors/1')
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      this.setState({
-        authors: data
-      })
-    })
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({
+          authors: data,
+        });
+      });
   }
+
   render() {
     return (
       <Container>
-        {this.state.authors.map(item => {
-          return (
-            <div>
+        {this.state.authors.map(item => (
+          <div>
             <About>
-              About {item.name}
+              About
+              {item.name}
             </About>
             <Header>
               <Image src={item.profile_pic} />
               <div>
-              <Name>
-                {item.name}
-              </Name>
-              <Button>
+                <Name>
+                  {item.name}
+                </Name>
+                <Button>
               Follow Author
-              </Button>
+                </Button>
               </div>
             </Header>
-            <p>{item.details}</p>
-            </div>
-          )
-        })}
+            <Details>
+              {item.details}
+            </Details>
+          </div>
+        ))}
       </Container>
-    )
+    );
   }
 }
 
