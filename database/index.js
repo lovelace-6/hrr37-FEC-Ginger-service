@@ -23,10 +23,12 @@ const getBook = id => search(`SELECT * FROM books WHERE id =${id}`);
 
 const getAuthor = id => search(`SELECT * FROM authors WHERE id =${id}`);
 
+const getAuthorTitles = id => search(`SELECT * FROM books WHERE author_id =${id}`);
+
 const close = () => {
   connection.end();
 };
 
 module.exports = {
-  addBook, addAuthor, getBook, getAuthor, close,
+  addBook, addAuthor, getBook, getAuthor, getAuthorTitles, close
 };

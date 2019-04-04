@@ -16,4 +16,9 @@ app.get('/books/:id/authors/:id', async (req, res) => {
   res.json(author);
 });
 
+app.get('/books/:id/authors/:id/titles', async (req, res) => {
+  const books = await db.getAuthorTitles(req.params.id);
+  res.json(books);
+});
+
 app.listen(port, () => console.log(`listening on port ${port}!`));
