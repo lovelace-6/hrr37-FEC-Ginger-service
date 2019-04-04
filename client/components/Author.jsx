@@ -62,6 +62,14 @@ const Details = styled.p`
   font-size: 14px;
 `;
 
+const Followers = styled.div`
+  font-family: lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: #999999;
+  margin-bottom: 4px;
+  margin-top: 4px;
+`
+
 class Author extends React.Component {
   constructor(props) {
     super(props);
@@ -87,6 +95,7 @@ class Author extends React.Component {
           <div>
             <About>
               About
+              {' '}
               {item.name}
             </About>
             <Header>
@@ -95,6 +104,10 @@ class Author extends React.Component {
                 <Name>
                   {item.name}
                 </Name>
+                <Followers>
+                {item.followers.toLocaleString()}
+                {' followers'}
+                </Followers>
                 <Button>
               Follow Author
                 </Button>
