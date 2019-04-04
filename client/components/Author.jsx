@@ -6,11 +6,14 @@ const About = styled.h1`
   font-size: 12px;
   color: #382110;
   text-transform: uppercase;
+  padding-bottom: 10px;
   border-bottom: 1px solid #D8D8D8;
 `;
 
-const H2 = styled.h2`
+const Name = styled.div`
   font-family: merriweather, serif;
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 const Container = styled.div`
@@ -23,7 +26,13 @@ const Image = styled.img`
   width: 75px;
   height: 75px;
   border-radius: 50%;
+  margin-right: 12px;
 `;
+
+const Header = styled.header`
+  display: flex;
+  align-items: top;
+`
 
 class Author extends React.Component {
   constructor(props) {
@@ -52,12 +61,13 @@ class Author extends React.Component {
             <div>
             <About>
               About {item.name}
-              </About>
-              <Image src={item.profile_pic}>
-            </Image>
-            <H2>
-            {item.name}
-            </H2>
+            </About>
+            <Header>
+              <Image src={item.profile_pic} />
+              <Name>
+                {item.name}
+              </Name>
+            </Header>
             <button>Follow Author</button>
             <p>{item.details}</p>
             </div>
