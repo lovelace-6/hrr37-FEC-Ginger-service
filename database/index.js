@@ -15,7 +15,7 @@ const search = (search, values) => new Promise((resolve, reject) => {
   });
 });
 
-const addBook = value => search('INSERT INTO books (title, description, author_id, published_year) VALUES (?, ?, ?, ?)', [value.title, value.description, value.author_id, value.published_year]);
+const addBook = value => search('INSERT INTO books (title, description, author_id, published_year, cover) VALUES (?, ?, ?, ?, ?)', [value.title, value.description, value.author_id, value.published_year, value.cover]);
 
 const addAuthor = value => search('INSERT INTO authors (name, details, profile_pic, followers) VALUES (?, ?, ?, ?)', [value.name, value.details, value.profile_pic, value.followers]);
 

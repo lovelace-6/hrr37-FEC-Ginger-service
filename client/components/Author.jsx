@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Books from '../components/Books.jsx';
 
 const About = styled.h1`
   font-family: lato, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -116,7 +117,9 @@ class Author extends React.Component {
             <Details>
               {item.details}
             </Details>
+            <Books />
           </div>
+
         ))}
       </Container>
     );

@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS books (
   description varchar(2000) NOT NULL,
   author_id int,
   published_year int NOT NULL,
+  cover varchar (1000) NOT NULL,
   PRIMARY KEY (ID)
 );
 

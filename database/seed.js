@@ -4,7 +4,7 @@ const data = require('../database/dummy_data.js');
 const createBook = () => {
   for (let i = 0; i < 100; i++) {
     db.addBook({
-      title: data.title(), description: data.description(), author_id: data.author_id({ min: 1, max: 50 }), published_year: data.year({ min: 1920, max: 2019 }),
+      title: data.title(), description: data.description(), author_id: data.author_id({ min: 1, max: 50 }), published_year: data.year({ min: 1920, max: 2019 }), cover: data.cover + data.author_id({min: 1, max: 7}) + '.jpg'
     });
   }
 };
