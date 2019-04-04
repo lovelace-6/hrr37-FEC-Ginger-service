@@ -14,6 +14,7 @@ class Books extends React.Component {
   constructor(props) {
     super(props);
     this.displayToolTip = this.displayToolTip.bind(this);
+    this.hideToolTip = this.hideToolTip.bind(this);
     this.state = {
       books: [],
       bookId: null
@@ -33,13 +34,18 @@ class Books extends React.Component {
       bookId: id
     })
   }
+  hideToolTip() {
+    this.setState({
+      bookId: null
+    })
+  }
   render() {
     return (
       <div>
         {this.state.books.map(item => {
           return (
             <BookContainer key={item.id}>
-            <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} src={item.cover} />
+            <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} onMouseLeave={() => {this.hideToolTip()}} src={item.cover} />
             </BookContainer>
           )
         })}
