@@ -117,6 +117,9 @@ class Author extends React.Component {
             <Details>
               {item.details}
             </Details>
+            <About>
+            books by {item.name}
+            </About>
             <Books />
           </div>
 
