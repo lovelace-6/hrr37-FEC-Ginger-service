@@ -6,6 +6,7 @@ border: 5px solid #D6D0C4;
 border-radius: 5px;
 box-shadow: 0 1px 2px rgba(0,0,0,0,15);
 padding: 10px;
+position: absolute;
 z-index: 10;
 width: 380px;
 `;
@@ -39,13 +40,15 @@ class ToolTip extends React.Component {
     return (
       <div>
         {this.state.books.map(item => {
-          return (
-            <ToolTipContainer key={item.id} id={item.id}>
-            <Title>
-            {item.title}
-            </Title>
-          </ToolTipContainer>
-          )
+          if(item.id === this.props.showId) {
+            return (
+              <ToolTipContainer key={item.id}>
+              <Title>
+              {item.title}
+              </Title>
+            </ToolTipContainer>
+            )
+          }
         })}
       </div>
     )

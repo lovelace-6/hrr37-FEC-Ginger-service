@@ -43,7 +43,7 @@ class Books extends React.Component {
             </BookContainer>
           )
         })}
-        <ToolTip />
+        <ToolTip showId={this.state.bookId} />
       </div>
     )
   }
