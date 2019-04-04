@@ -8,12 +8,20 @@ const About = styled.h1`
   text-transform: uppercase;
   padding-bottom: 10px;
   border-bottom: 1px solid #D8D8D8;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Name = styled.div`
   font-family: merriweather, serif;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Container = styled.div`
@@ -31,8 +39,23 @@ const Image = styled.img`
 
 const Header = styled.header`
   display: flex;
-  align-items: top;
-`
+  align-items: flex-start;
+`;
+
+const Button = styled.button`
+  border: 1px solid #D6D0C4;
+  font-family: lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  background-color: #F4F1EA;
+  color: #333333;
+  border-radius: 3px;
+  padding: 8px 12px;
+  cursor: pointer;
+  &:hover {
+    background-color: #ede6d6;
+  }
+`;
 
 class Author extends React.Component {
   constructor(props) {
@@ -64,11 +87,15 @@ class Author extends React.Component {
             </About>
             <Header>
               <Image src={item.profile_pic} />
+              <div>
               <Name>
                 {item.name}
               </Name>
+              <Button>
+              Follow Author
+              </Button>
+              </div>
             </Header>
-            <button>Follow Author</button>
             <p>{item.details}</p>
             </div>
           )
