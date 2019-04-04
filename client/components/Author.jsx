@@ -19,6 +19,12 @@ const Container = styled.div`
   width: 300px;
 `;
 
+const Image = styled.img`
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+`;
+
 class Author extends React.Component {
   constructor(props) {
     super(props);
@@ -47,7 +53,8 @@ class Author extends React.Component {
             <About>
               About {item.name}
               </About>
-            <img src={item.profile_pic}></img>
+              <Image src={item.profile_pic}>
+            </Image>
             <H2>
             {item.name}
             </H2>
