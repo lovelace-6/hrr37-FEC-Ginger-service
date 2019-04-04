@@ -13,9 +13,10 @@ const BookContainer = styled.div`
 class Books extends React.Component {
   constructor(props) {
     super(props);
+    this.displayToolTip = this.displayToolTip.bind(this);
     this.state = {
       books: [],
-      displayToolTip: false
+      bookId: null
     }
   }
   componentDidMount() {
@@ -27,15 +28,18 @@ class Books extends React.Component {
         });
       });
   }
-
-
+  displayToolTip(id) {
+    this.setState({
+      bookId: id
+    })
+  }
   render() {
     return (
       <div>
         {this.state.books.map(item => {
           return (
-            <BookContainer>
-            <BookCover src={item.cover} />
+            <BookContainer key={item.id}>
+            <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} src={item.cover} />
             </BookContainer>
           )
         })}

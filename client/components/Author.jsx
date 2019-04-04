@@ -93,7 +93,7 @@ class Author extends React.Component {
     return (
       <Container>
         {this.state.authors.map(item => (
-          <div>
+          <div key={item.id}>
             <About>
               About
               {' '}

@@ -40,7 +40,7 @@ class ToolTip extends React.Component {
       <div>
         {this.state.books.map(item => {
           return (
-            <ToolTipContainer>
+            <ToolTipContainer key={item.id} id={item.id}>
             <Title>
             {item.title}
             </Title>
