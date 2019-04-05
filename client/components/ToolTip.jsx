@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ShelfButton from '../components/ShelfButton.jsx';
 
 const ToolTipContainer = styled.section`
 border: 5px solid #D6D0C4;
@@ -71,6 +72,7 @@ class ToolTip extends React.Component {
       <Description>
       {this.props.description}
       </Description>
+      <ShelfButton />
     </ToolTipContainer>
     </ToolTipTail>
     </Wrapper>
