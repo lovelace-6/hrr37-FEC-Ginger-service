@@ -1,5 +1,9 @@
 {
   "name": "hrr37-fec-ginger-service",
+  "jest": {
+    "verbose": true,
+    "setupFilesAfterEnv": ["<rootDir>/client/test/enzymeSetup.js"]
+  },
   "version": "1.0.0",
   "description": "FEC service bookshelf",
   "main": "index.js",
@@ -26,12 +30,14 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
+    "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.7.1",
     "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
     "webpack": "^4.29.6",
