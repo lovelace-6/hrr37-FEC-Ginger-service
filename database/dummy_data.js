@@ -6,9 +6,11 @@ const title = faker.commerce.productName;
 const description = faker.lorem.paragraphs;
 const year = faker.random.number;
 const author_id = faker.random.number;
-const profilePic = 'http://d37pd3xfja253q.cloudfront.net/authors/sample-image-'
+const cover = 'http://d37pd3xfja253q.cloudfront.net/books/sample-image-';
+const profilePic = 'http://d37pd3xfja253q.cloudfront.net/authors/sample-image-';
+const followers = faker.random.number;
 
 
 module.exports = {
-  name, details, title, description, year, profilePic, author_id
+  name, details, title, description, year, author_id, cover, profilePic, followers
 };

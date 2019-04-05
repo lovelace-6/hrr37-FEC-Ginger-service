@@ -3,9 +3,9 @@ const config = require('./config');
 
 const connection = mysql.createConnection(config);
 
-connection.connect(function(err){
-  if(err) throw err;
-  console.log('connected')
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('connected');
 });
 
 const search = (search, values) => new Promise((resolve, reject) => {
@@ -15,22 +15,20 @@ const search = (search, values) => new Promise((resolve, reject) => {
   });
 });
 
-const addBook = function (value) {
-  return search('INSERT INTO books (title, description, author_id, published_year) VALUES (?, ?, ?, ?)', [value.title, value.description, value.author_id, value.published_year]);
-};
+const addBook = value => search('INSERT INTO books (title, description, author_id, published_year, cover) VALUES (?, ?, ?, ?, ?)', [value.title, value.description, value.author_id, value.published_year, value.cover]);
 
-const addAuthor = function(value) {
-  return search('INSERT INTO authors (name, details, profile_pic) VALUES (?, ?, ?)', [value.name, value.details, value.profile_pic]);
-};
+const addAuthor = value => search('INSERT INTO authors (name, details, profile_pic, followers) VALUES (?, ?, ?, ?)', [value.name, value.details, value.profile_pic, value.followers]);
 
-const getBook = function (id) {
-  return search(`SELECT * FROM books WHERE id =${id}`);
-};
+const getBook = id => search(`SELECT * FROM books WHERE id =${id}`);
 
-const close = function () {
+const getAuthor = id => search(`SELECT * FROM authors WHERE id =${id}`);
+
+const getAuthorTitles = id => search(`SELECT * FROM books WHERE author_id =${id}`);
+
+const close = () => {
   connection.end();
 };
 
 module.exports = {
-  addBook, getBook, close, addAuthor
+  addBook, addAuthor, getBook, getAuthor, getAuthorTitles, close
 };
