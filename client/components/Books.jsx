@@ -53,7 +53,7 @@ class Books extends React.Component {
             <BookContainer key={item.id}>
             <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} onMouseLeave={this.hideToolTip} src={item.cover} />
             {this.state.bookId === item.id &&
-            <ToolTip {...item} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip}/>
+            <ToolTip {...item} author={this.props.author} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip}/>
             }
             </BookContainer>
           )

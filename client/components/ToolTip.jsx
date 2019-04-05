@@ -21,6 +21,12 @@ const Title = styled.h1`
   line-height: 21px;
 `;
 
+const Author = styled.div`
+  font-family: Merriweather, Georgia, serif;
+  font-size: 12px;
+  line-height: 150%;
+`;
+
 const ToolTipTail = styled.div`
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
@@ -34,6 +40,14 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
+const Description = styled.div`
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: Merriweather, Georgia, Times New Roman, serif;
+  font-size: 12px;
+`;
+
 class ToolTip extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +58,6 @@ class ToolTip extends React.Component {
   }
 
   render() {
-    console.log(this.props.cover)
     return (
       <Wrapper>
       <ToolTipTail>
@@ -52,6 +65,12 @@ class ToolTip extends React.Component {
       <Title>
       {this.props.title}
       </Title>
+      <Author>
+      by {this.props.author}
+      </Author>
+      <Description>
+      {this.props.description}
+      </Description>
     </ToolTipContainer>
     </ToolTipTail>
     </Wrapper>
