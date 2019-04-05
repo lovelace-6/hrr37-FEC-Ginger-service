@@ -4,6 +4,7 @@ import ToolTip from '../components/ToolTip.jsx';
 
 const BookCover = styled.img`
   width: 50px;
+  cursor: pointer;
 `;
 
 const BookContainer = styled.div`
