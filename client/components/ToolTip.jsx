@@ -32,17 +32,19 @@ class ToolTip extends React.Component {
     .then(res => res.json())
     .then((data) => {
       this.setState({
-        books: data
+        books: data,
+        show: false
       });
     });
   }
+
   render() {
     return (
       <div>
         {this.state.books.map(item => {
           if(item.id === this.props.showId) {
             return (
-              <ToolTipContainer key={item.id}>
+              <ToolTipContainer key={item.id} onMouseEnter={() => {this.props.onMouseEnter(item.id)}} onMouseLeave={this.props.onMouseLeave}>
               <Title>
               {item.title}
               </Title>

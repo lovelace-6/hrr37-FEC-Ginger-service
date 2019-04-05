@@ -15,6 +15,7 @@ class Books extends React.Component {
     super(props);
     this.displayToolTip = this.displayToolTip.bind(this);
     this.hideToolTip = this.hideToolTip.bind(this);
+    this.toolTipTimeout = null;
     this.state = {
       books: [],
       bookId: null
@@ -30,14 +31,17 @@ class Books extends React.Component {
       });
   }
   displayToolTip(id) {
+    clearTimeout(this.toolTipTimeout)
     this.setState({
       bookId: id
     })
   }
   hideToolTip() {
-    this.setState({
-      bookId: null
-    })
+    this.toolTipTimeout = setTimeout(() => {
+      this.setState({
+        bookId: null
+      })
+    }, 500)
   }
   render() {
     return (
@@ -45,11 +49,11 @@ class Books extends React.Component {
         {this.state.books.map(item => {
           return (
             <BookContainer key={item.id}>
-            <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} onMouseLeave={() => {this.hideToolTip()}} src={item.cover} />
+            <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} onMouseLeave={this.hideToolTip} src={item.cover} />
             </BookContainer>
           )
         })}
-        <ToolTip showId={this.state.bookId} />
+        <ToolTip showId={this.state.bookId} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip}/>
       </div>
     )
   }
