@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ShelfList from '../components/ShelfList.jsx'
 
 const MainButton = styled.button`
   background-color: #409D69;
@@ -20,51 +21,38 @@ const DropDownButton = styled.button`
   width: 27px;
   padding 5px;
   background-color: #409D69;
-`;
-
-const DropDownList = styled.ul`
-  font-family: Lato, Helvetica Neue, Arial, sans-serif;
-  font-size: 12px;
-  list-style-type: none;
-`;
-
-const DropDownContainer = styled.div`
-  max-height: 215px;
-  margin: 2px 0px 0px 0px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-bottom: 2px;
+  cursor: pointer;
 `;
 
 class ShelfButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHidden: true
+      showList: false
     }
+  }
+  toggleList(e) {
+    e.preventDefault();
+    this.setState({
+      showList: !this.state.showList
+    })
   }
   render() {
     return (
       <div>
         <form>
-        <DropDownContainer>
         <MainButton>
           Want to Read
         </MainButton>
-        <DropDownButton>
+        <DropDownButton onClick={this.toggleList.bind(this)}>
         </DropDownButton>
-        <DropDownList>
-          <li>
-            Read
-          </li>
-          <li>
-            Currently Reading
-          </li>
-          <li>
-            currently-reading-again
-          </li>
-        </DropDownList>
-        </DropDownContainer>
+        {
+          this.state.showList ? (
+        <ShelfList showList={this.state.showList} />
+          ) : (
+            null
+          )
+        }
         </form>
       </div>
     )
