@@ -14,6 +14,7 @@ const MainButton = styled.button`
   margin-bottom: 10px;
   width: 110px;
   padding: 6px 0 6px 8px;
+  outline: none;
 `;
 
 const DropDownButton = styled.button`
@@ -22,6 +23,7 @@ const DropDownButton = styled.button`
   padding 5px;
   background-color: #409D69;
   cursor: pointer;
+  outline: none;
 `;
 
 class ShelfButton extends React.Component {

@@ -39,6 +39,7 @@ const ToolTipTail = styled.div`
 const Wrapper = styled.div`
   display: block;
   position: relative;
+  margin-bottom: 50px;
 `;
 
 const Description = styled.div`
