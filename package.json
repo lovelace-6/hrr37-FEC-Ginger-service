@@ -2,7 +2,9 @@
   "name": "hrr37-fec-ginger-service",
   "jest": {
     "verbose": true,
-    "setupFilesAfterEnv": ["<rootDir>/client/test/enzymeSetup.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/client/test/enzymeSetup.js"
+    ]
   },
   "version": "1.0.0",
   "description": "FEC service bookshelf",
@@ -49,6 +51,7 @@
     "mysql": "^2.16.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-star-ratings": "^2.3.0",
     "styled-components": "^4.2.0"
   }
 }
