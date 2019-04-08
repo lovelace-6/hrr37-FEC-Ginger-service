@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import $ from 'jquery';
 import ShelfButton from '../components/ShelfButton.jsx';
 
 const DropDownList = styled.ul`
@@ -38,9 +39,20 @@ class ShelfList extends React.Component {
   constructor(props) {
     super(props);
   }
+  // handleClick(e) {
+  //   this.props.shelfSelect(e.target.textContent);
+  //   this.props.toggleList();
+  // }
   handleClick(e) {
-    this.props.shelfSelect(e.target.textContent);
-    this.props.toggleList();
+    $.ajax({
+      type: 'POST',
+      url: 'http://127.0.0.1:3000/books/1/authors/1/titles/status',
+      data: {status: e.target.textContent, id: this.props.id},
+      context: this,
+      success: console.log('updated!')
+    }).done(() => {
+      console.log(data)
+    })
   }
   render() {
     return (

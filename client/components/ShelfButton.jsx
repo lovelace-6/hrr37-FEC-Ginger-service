@@ -61,7 +61,7 @@ class ShelfButton extends React.Component {
         </DropDownButton>
         {
           this.state.showList ? (
-        <ShelfList toggleList={this.toggleList.bind(this)} shelfSelect={this.shelfSelect.bind(this)} />
+        <ShelfList id={this.props.id} toggleList={this.toggleList.bind(this)} shelfSelect={this.shelfSelect.bind(this)} />
           ) : (
             null
           )

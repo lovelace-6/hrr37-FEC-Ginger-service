@@ -73,7 +73,7 @@ class ToolTip extends React.Component {
       <Description>
       {this.props.description}
       </Description>
-      <ShelfButton />
+      <ShelfButton id={this.props.id} />
     </ToolTipContainer>
     </ToolTipTail>
     </Wrapper>

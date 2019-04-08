@@ -25,10 +25,12 @@ const getAuthor = id => search(`SELECT * FROM authors WHERE id =${id}`);
 
 const getAuthorTitles = id => search(`SELECT * FROM books WHERE author_id =${id}`);
 
+const updateStatus = (value) => search(`UPDATE books SET ? WHERE ?`, [{status: value.status}, {id: value.id}]);
+
 const close = () => {
   connection.end();
 };
 
 module.exports = {
-  addBook, addAuthor, getBook, getAuthor, getAuthorTitles, close
+  addBook, addAuthor, getBook, getAuthor, getAuthorTitles, updateStatus, close
 };
