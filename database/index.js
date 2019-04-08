@@ -25,7 +25,7 @@ const getAuthor = id => search(`SELECT * FROM authors WHERE id =${id}`);
 
 const getAuthorTitles = id => search(`SELECT * FROM books WHERE author_id =${id}`);
 
-const updateStatus = (status, id) => search(`UPDATE books SET status = ${status} WHERE id = ${id}`);
+const updateStatus = (status, id) => search(`UPDATE books SET ? WHERE ?`, [{status: status}, {id: id}]);
 
 const close = () => {
   connection.end();

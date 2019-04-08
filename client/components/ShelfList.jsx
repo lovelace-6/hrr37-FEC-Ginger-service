@@ -46,7 +46,7 @@ class ShelfList extends React.Component {
   handleClick(e) {
     $.ajax({
       type: 'POST',
-      url: 'http://127.0.0.1:3000/books/1/authors/1/titles/status',
+      url: 'http://127.0.0.1:3000/books/:id/status',
       data: {status: e.target.textContent, id: this.props.id},
       context: this,
       success: console.log('updated!')
