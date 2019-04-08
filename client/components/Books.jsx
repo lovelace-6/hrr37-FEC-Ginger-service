@@ -4,10 +4,12 @@ import ToolTip from '../components/ToolTip.jsx';
 
 const BookCover = styled.img`
   width: 50px;
+  cursor: pointer;
 `;
 
 const BookContainer = styled.div`
-  display: inline;
+  display: inline-block;
+  position: relative;
 `;
 
 class Books extends React.Component {
@@ -50,10 +52,12 @@ class Books extends React.Component {
           return (
             <BookContainer key={item.id}>
             <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} onMouseLeave={this.hideToolTip} src={item.cover} />
+            {this.state.bookId === item.id &&
+            <ToolTip {...item} author={this.props.author} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip}/>
+            }
             </BookContainer>
           )
         })}
-        <ToolTip showId={this.state.bookId} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip}/>
       </div>
     )
   }

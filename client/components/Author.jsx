@@ -26,9 +26,9 @@ const Name = styled.div`
 `;
 
 const Container = styled.div`
-  float: right;
-  display: inline;
+  display: flex;
   width: 300px;
+  margin: 50px;
 `;
 
 const Image = styled.img`
@@ -120,7 +120,7 @@ class Author extends React.Component {
             <About>
             books by {item.name}
             </About>
-            <Books />
+            <Books author={item.name} />
           </div>
 
         ))}
