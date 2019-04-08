@@ -16,7 +16,7 @@ const MainButton = styled.button`
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   margin-bottom: 10px;
-  width: 110px;
+  width: 130px;
   padding: 6px 0 6px 8px;
   outline: none;
 `;
@@ -25,6 +25,8 @@ const DropDownButton = styled.button`
   height: 28px;
   width: 27px;
   padding 5px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   background-color: #409D69;
   cursor: pointer;
   outline: none;

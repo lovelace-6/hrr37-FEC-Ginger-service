@@ -22,12 +22,13 @@ const DropDownList = styled.ul`
 
 const DropDownContainer = styled.div`
   max-height: 250px;
-  margin: 2px;
+  margin: 0px;
   padding: 0px;
+  border-radius: 3px;
   border: 1px solid #cccccc;
   background-color: #ffffff;
   z-index: 1001000;
-  top: 28px;
+  top: 27px;
   width: 180px;
   position: absolute;
 `;
