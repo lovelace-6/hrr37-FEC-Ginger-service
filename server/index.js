@@ -23,7 +23,8 @@ app.get('/books/:id/authors/:id/titles', async (req, res) => {
 
 app.post('/books/:id/authors/:id/titles/status', async (req, res) => {
   const status = await db.updateStatus(req.body.status, req.body.id);
-  console.log(req.body.status, req.body.id);
+  console.log(status)
+
 });
 
 app.listen(port, () => console.log(`listening on port ${port}!`));

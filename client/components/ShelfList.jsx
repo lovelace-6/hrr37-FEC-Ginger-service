@@ -50,8 +50,6 @@ class ShelfList extends React.Component {
       data: {status: e.target.textContent, id: this.props.id},
       context: this,
       success: console.log('updated!')
-    }).done(() => {
-      console.log(data)
     })
   }
   render() {
