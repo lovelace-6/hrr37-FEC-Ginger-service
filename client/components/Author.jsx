@@ -26,7 +26,6 @@ const Name = styled.div`
 `;
 
 const Container = styled.div`
-  float: right;
   display: flex;
   width: 300px;
   margin: 50px;

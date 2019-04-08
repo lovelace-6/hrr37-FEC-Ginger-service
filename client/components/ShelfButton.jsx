@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import ShelfList from '../components/ShelfList.jsx'
 
+const Wrapper = styled.div`
+  position: relative;
+`;
+
 const MainButton = styled.button`
   background-color: #409D69;
   font-family: Lato, Helvetica Neue, Arial, sans-serif;
@@ -30,7 +34,8 @@ class ShelfButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showList: false
+      showList: false,
+      shelf: 'Want to Read'
     }
   }
   toggleList(e) {
@@ -39,24 +44,27 @@ class ShelfButton extends React.Component {
       showList: !this.state.showList
     })
   }
+  shelfSelect(val) {
+    this.setState({
+      shelf: val
+    })
+  }
   render() {
     return (
-      <div>
-        <form>
+      <Wrapper>
         <MainButton>
-          Want to Read
+          {this.state.shelf}
         </MainButton>
         <DropDownButton onClick={this.toggleList.bind(this)}>
         </DropDownButton>
         {
           this.state.showList ? (
-        <ShelfList showList={this.state.showList} />
+        <ShelfList shelfSelect={this.shelfSelect.bind(this)} />
           ) : (
             null
           )
         }
-        </form>
-      </div>
+      </Wrapper>
     )
   }
 }
