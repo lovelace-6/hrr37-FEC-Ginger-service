@@ -39,6 +39,7 @@ class ShelfList extends React.Component {
   }
   handleClick(e) {
     this.props.shelfSelect(e.target.textContent);
+    this.props.toggleList();
   }
   render() {
     return (
