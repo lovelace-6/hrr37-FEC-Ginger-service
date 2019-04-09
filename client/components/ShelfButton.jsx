@@ -37,11 +37,10 @@ class ShelfButton extends React.Component {
     super(props);
     this.state = {
       showList: false,
-      shelf: 'Want to Read'
+      shelf: this.props.status
     }
   }
   toggleList() {
-
     this.setState({
       showList: !this.state.showList
     })
@@ -51,6 +50,7 @@ class ShelfButton extends React.Component {
       shelf: val
     })
   }
+
   render() {
     return (
       <Wrapper>
@@ -61,7 +61,7 @@ class ShelfButton extends React.Component {
         </DropDownButton>
         {
           this.state.showList ? (
-        <ShelfList toggleList={this.toggleList.bind(this)} shelfSelect={this.shelfSelect.bind(this)} />
+        <ShelfList id={this.props.id} toggleList={this.toggleList.bind(this)} shelfSelect={this.shelfSelect.bind(this)} />
           ) : (
             null
           )

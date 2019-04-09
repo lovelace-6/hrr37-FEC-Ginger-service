@@ -85,8 +85,8 @@ class Author extends React.Component {
       .then((data) => {
         this.setState({
           authors: data,
-        });
       });
+    });
   }
 
   render() {
