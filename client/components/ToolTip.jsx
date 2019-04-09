@@ -46,6 +46,7 @@ const Description = styled.div`
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-right: 5px;
   font-family: Merriweather, Georgia, Times New Roman, serif;
   font-size: 12px;
 `;

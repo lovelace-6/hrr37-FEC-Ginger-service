@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import $ from 'jquery';
+import Rating from '../components/Rating.jsx';
 import ShelfButton from '../components/ShelfButton.jsx';
 
 const DropDownList = styled.ul`
