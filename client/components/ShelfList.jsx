@@ -39,10 +39,6 @@ class ShelfList extends React.Component {
   constructor(props) {
     super(props);
   }
-  // handleClick(e) {
-  //   this.props.shelfSelect(e.target.textContent);
-  //   this.props.toggleList();
-  // }
 
   handleClick(e) {
     this.props.toggleList();
