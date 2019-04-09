@@ -43,15 +43,18 @@ class ShelfList extends React.Component {
   //   this.props.shelfSelect(e.target.textContent);
   //   this.props.toggleList();
   // }
+
   handleClick(e) {
-    this.props.shelfSelect(e.target.textContent);
     this.props.toggleList();
+    let text = e.target.textContent;
     $.ajax({
       type: 'POST',
       url: 'http://127.0.0.1:3000/books/:id/authors/status',
-      data: {status: e.target.textContent, id: this.props.id},
+      data: {status: text, id: this.props.id},
       context: this,
-      success: console.log('updated!')
+      success: console.log('updated')
+    }).done(() => {
+      this.props.shelfSelect(text);
     });
   }
   render() {

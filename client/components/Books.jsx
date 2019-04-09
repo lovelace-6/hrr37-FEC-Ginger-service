@@ -15,6 +15,7 @@ const BookContainer = styled.div`
 class Books extends React.Component {
   constructor(props) {
     super(props);
+    this.getBooks = this.getBooks.bind(this);
     this.displayToolTip = this.displayToolTip.bind(this);
     this.hideToolTip = this.hideToolTip.bind(this);
     this.toolTipTimeout = null;
@@ -23,7 +24,8 @@ class Books extends React.Component {
       bookId: null
     }
   }
-  componentDidMount() {
+  getBooks() {
+    console.log('running!')
     fetch('http://127.0.0.1:3000/books/1/authors/1/titles')
       .then(res => res.json())
       .then((data) => {
@@ -31,6 +33,9 @@ class Books extends React.Component {
           books: data
         });
       });
+  }
+  componentDidMount() {
+    this.getBooks()
   }
   displayToolTip(id) {
     clearTimeout(this.toolTipTimeout)
@@ -53,7 +58,7 @@ class Books extends React.Component {
             <BookContainer key={item.id}>
             <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} onMouseLeave={this.hideToolTip} src={item.cover} />
             {this.state.bookId === item.id &&
-            <ToolTip {...item} author={this.props.author} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip}/>
+            <ToolTip {...item} onUpdate={this.getBooks} author={this.props.author} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip}/>
             }
             </BookContainer>
           )

@@ -49,8 +49,8 @@ class ShelfButton extends React.Component {
     this.setState({
       shelf: val
     })
+    this.props.onUpdate();
   }
-
   render() {
     return (
       <Wrapper>
