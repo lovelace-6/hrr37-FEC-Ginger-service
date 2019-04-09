@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import ShelfList from '../components/ShelfList.jsx'
+import ShelfList from '../components/ShelfList.jsx';
+import Rating from '../components/Rating.jsx';
+import StarRatingComponent from 'react-star-rating-component';
 
 const Wrapper = styled.div`
+  display: flex;
   position: relative;
+  padding: 5px;
 `;
 
 const MainButton = styled.button`
@@ -49,8 +53,8 @@ class ShelfButton extends React.Component {
     this.setState({
       shelf: val
     })
+    this.props.onUpdate();
   }
-
   render() {
     return (
       <Wrapper>
@@ -59,6 +63,11 @@ class ShelfButton extends React.Component {
         </MainButton>
         <DropDownButton onClick={this.toggleList.bind(this)}>
         </DropDownButton>
+        <Rating />
+        <StarRatingComponent
+          name="rating"
+          starColor="#fd4900"
+        />
         {
           this.state.showList ? (
         <ShelfList id={this.props.id} toggleList={this.toggleList.bind(this)} shelfSelect={this.shelfSelect.bind(this)} />

@@ -46,8 +46,18 @@ const Description = styled.div`
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-right: 5px;
   font-family: Merriweather, Georgia, Times New Roman, serif;
   font-size: 12px;
+`;
+
+const ExpandText = styled.span`
+  font-family: Merriweather, Georgia, Times New Roman, serif;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 class ToolTip extends React.Component {
@@ -55,10 +65,15 @@ class ToolTip extends React.Component {
     super(props);
     this.state = {
       bookId: 0,
-      books: []
+      books: [],
+      expand: false
     }
   }
-
+  handleClick() {
+    this.setState({
+      expand: !this.state.expand
+    })
+  }
   render() {
     return (
       <Wrapper>
@@ -70,10 +85,21 @@ class ToolTip extends React.Component {
       <Author>
       by {this.props.author}
       </Author>
-      <Description>
-      {this.props.description}
-      </Description>
-      <ShelfButton id={this.props.id} status={this.props.status} />
+      {
+        this.state.expand ? (
+          <Description>
+          {this.props.description}
+          <ExpandText onClick={this.handleClick.bind(this)}>...less</ExpandText>
+          </Description>
+        ) : (
+          <Description>
+          {this.props.description.slice(0, 200)}
+          <ExpandText onClick={this.handleClick.bind(this)}>...more</ExpandText>
+          </Description>
+        )
+      }
+
+      <ShelfButton id={this.props.id} status={this.props.status} onUpdate={this.props.onUpdate} />
     </ToolTipContainer>
     </ToolTipTail>
     </Wrapper>
