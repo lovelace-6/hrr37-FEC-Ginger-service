@@ -1,16 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import style from './css/Books.less';
 import ToolTip from '../components/ToolTip.jsx';
-
-const BookCover = styled.img`
-  width: 50px;
-  cursor: pointer;
-`;
-
-const BookContainer = styled.div`
-  display: inline-block;
-  position: relative;
-`;
 
 class Books extends React.Component {
   constructor(props) {
@@ -26,7 +16,7 @@ class Books extends React.Component {
   }
   getBooks() {
     console.log('running!')
-    fetch('http://127.0.0.1:3000/books/1/authors/1/titles')
+    fetch(`/books/${this.props.bookId}/authors/${this.props.authorId}/titles`)
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -53,16 +43,14 @@ class Books extends React.Component {
   render() {
     return (
       <div>
-        {this.state.books.map(item => {
-          return (
-            <BookContainer key={item.id}>
-            <BookCover key={item.id} onMouseEnter={() => {this.displayToolTip(item.id)}} onMouseLeave={this.hideToolTip} src={item.cover} />
-            {this.state.bookId === item.id &&
-            <ToolTip {...item} onUpdate={this.getBooks} author={this.props.author} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip}/>
+        {this.state.books.map(item => (
+          <div className={style.bookContainer} key={item.id}>
+            <img className={style.bookCover} key={item.id} onMouseEnter={() => { this.displayToolTip(item.id); }} onMouseLeave={this.hideToolTip} src={item.cover} alt="bookCover"/>
+            {this.state.bookId === item.id
+            && <ToolTip {...item} onUpdate={this.getBooks} author={this.props.author} onMouseEnter={this.displayToolTip} onMouseLeave={this.hideToolTip} />
             }
-            </BookContainer>
-          )
-        })}
+          </div>
+        ))}
       </div>
     )
   }

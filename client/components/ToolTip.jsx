@@ -1,64 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import style from './css/ToolTip.less';
 import ShelfButton from '../components/ShelfButton.jsx';
-
-const ToolTipContainer = styled.section`
-border: 5px solid #D6D0C4;
-border-radius: 5px;
-padding-left: 10px;
-box-shadow: 0 1px 2px rgba(0,0,0,0,15);
-position: absolute;
-right: -11px;
-z-index: 10;
-top: 8px;
-width: 380px;
-`;
-
-const Title = styled.h1`
-  font-family: Merriweather, Georgia, serif;
-  font-weight: bold;
-  font-size: 14px;
-  color: #33333;
-  line-height: 21px;
-`;
-
-const Author = styled.div`
-  font-family: Merriweather, Georgia, serif;
-  font-size: 12px;
-  line-height: 150%;
-`;
-
-const ToolTipTail = styled.div`
-  border-right: 10px solid transparent;
-  border-left: 10px solid transparent;
-  border-bottom: 10px solid #D6D0C4;
-  position: absolute;
-  right: 20px;
-`;
-
-const Wrapper = styled.div`
-  display: block;
-  position: relative;
-  margin-bottom: 50px;
-`;
-
-const Description = styled.div`
-  display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-right: 5px;
-  font-family: Merriweather, Georgia, Times New Roman, serif;
-  font-size: 12px;
-`;
-
-const ExpandText = styled.span`
-  font-family: Merriweather, Georgia, Times New Roman, serif;
-  font-size: 12px;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
 
 class ToolTip extends React.Component {
   constructor(props) {
@@ -76,33 +18,34 @@ class ToolTip extends React.Component {
   }
   render() {
     return (
-      <Wrapper>
-      <ToolTipTail>
-      <ToolTipContainer onMouseEnter={() => {this.props.onMouseEnter(this.props.id)}} onMouseLeave={this.props.onMouseLeave}>
-      <Title>
+      <div className={style.wrapper}>
+      <div className={style.toolTipTail}>
+      <div className={style.toolTipContainer}  onMouseEnter={() => {this.props.onMouseEnter(this.props.id)}} onMouseLeave={this.props.onMouseLeave}>
+      <div className={style.title}>
       {this.props.title}
-      </Title>
-      <Author>
+      </div>
+      <div className={style.author}>
       by {this.props.author}
-      </Author>
+      </div>
       {
         this.state.expand ? (
-          <Description>
+          <div className={style.bookDescription}>
           {this.props.description}
-          <ExpandText onClick={this.handleClick.bind(this)}>...less</ExpandText>
-          </Description>
+          <div className={style.expandText} onClick={this.handleClick.bind(this)}>...less</div>
+          </div>
         ) : (
-          <Description>
+          <div className={style.bookDescription}>
           {this.props.description.slice(0, 200)}
-          <ExpandText onClick={this.handleClick.bind(this)}>...more</ExpandText>
-          </Description>
+          <div className={style.expandText} onClick={this.handleClick.bind(this)}>...more</div>
+          </div>
         )
       }
 
       <ShelfButton id={this.props.id} status={this.props.status} onUpdate={this.props.onUpdate} />
-    </ToolTipContainer>
-    </ToolTipTail>
-    </Wrapper>
+    </div>
+    </div>
+    </div>
+
     )
   }
 }
