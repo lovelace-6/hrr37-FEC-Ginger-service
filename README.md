@@ -1,7 +1,28 @@
-# Getting Started
-* __Note:__ Nodemon should be installed globally.
-* Open a terminal instance for every service and one for the proxy.
-* Run 'npm install' for every service and the proxy.
-* Run 'npm run build' for every service to create a bundle.js file.
-* Run 'npm start' for every service and the proxy.
-* In a browser navigate to localhost:3000
+# Bookshelf
+
+> Bookshelf is a clone of an item page from https://goodreads.com. It includes 4 modules: the main book information, extra details, author details, and the reviews.
+
+## Author Module
+> This repo is specific to the author's module. Specific features include:
+ * Displaying author Name
+ * Profile picture 
+ * followers
+ * author bio
+ * books by author. 
+   * Books by author are displayed in image format.
+ * Book summary in tooltip 
+ 
+ # Development 
+ * To start bundling ```npm run build```
+ * To start server ```npm run start:dev```
+ 
+ ## Installing Dependencies 
+ * Install required packages ```npm install```
+
+### API ENDPOINTS (CRUD) 
+|Intention                  | request type  | request url       | request body             | side effect         | response body 
+|---------------------------|:-------------:|-------------------|--------------------------|---------------------|----------------------------------------------|
+| Retrieves book info     | GET           | /books/:id/authors/title      | none             | none                | `{id:1,title:Generic Frozen Towels,description:..., author_id:..., published_year:..., cover:..., status:want to read"}` |
+| Retrieves author info  | GET            | /books/:id/authors/:id          | none             | none                | `{id:1, name:..., details:..., profile_pic:..., followers:...}` |
+
+
