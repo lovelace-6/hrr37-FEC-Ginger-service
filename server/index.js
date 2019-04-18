@@ -8,15 +8,18 @@ const db = require('../database/index.js');
 
 app.use(bodyParser.json());
 
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/books/:id', express.static(path.join(__dirname, '../public')));
 
 app.get('/books/:id/authors/title', async(req, res) => {
+  console.log('server/index line 16')
   const title = await db.getBook(req.params.id);
   res.json(title);
 });
 
 app.get('/books/:id/authors/:id', async (req, res) => {
+  console.log('server/index line 21')
   const author = await db.getAuthor(req.params.id);
   res.json(author);
 });

@@ -4,6 +4,7 @@ import App from '../components/App.jsx';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const Authors = () => {
+  console.log('hi')
   return (
     <Switch>
         <Route path="/books/:id" component={App}/>

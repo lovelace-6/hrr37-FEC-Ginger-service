@@ -11,6 +11,7 @@ class Author extends React.Component {
   }
 
   componentDidMount() {
+    console.log('hi')
     fetch(`/books/${this.props.bookId}/authors/title`)
       .then(res => res.json())
       .then((title) => {
@@ -20,7 +21,7 @@ class Author extends React.Component {
       .then((data) => {
         this.setState({
           authors: data,
-      });
+      },()=>console.log(this.state.authors));
     });
   }
 
