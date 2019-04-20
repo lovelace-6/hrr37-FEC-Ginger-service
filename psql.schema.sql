@@ -21,3 +21,8 @@ CREATE TABLE IF NOT EXISTS authors (
   followers integer
 
 );
+
+--copies cvs file to postgres
+\copy books(title,description,author_id, published_year, cover, status) FROM '/Users/Maxwell/Desktop/hrr37-FEC-Ginger-service/BooksData.csv' DELIMITER ',' CSV HEADER;
+
+\copy authors(name, details, profile_pic, followers) FROM '/Users/Maxwell/Desktop/hrr37-FEC-Ginger-service/AuthorsData.csv' DELIMITER ',' CSV HEADER;
