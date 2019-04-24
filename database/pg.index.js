@@ -17,7 +17,7 @@ var getBooks = async(id) => {
 
    var query = `select * from books where id =${id}`
    var response = await pool.query(query)
-   return response.rows[0]
+   return response.rows
 
   } catch (error){
     return error
@@ -49,6 +49,7 @@ var getAuthorTitles = async (authorId) =>{
 }
 
 var updateStatus = async (bookStatus, booksId) =>{
+  console.log('pg updated')
   try{
     var query = `update books set status = ${bookStatus} where id = ${booksId}`
 
