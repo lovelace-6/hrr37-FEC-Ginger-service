@@ -1,11 +1,10 @@
 const express = require('express');
-
 const app = express();
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
-
-const mongo = require('../database/mongo.index.js')
+const pg = require('../database/pg.index.js')
+// const mongo = require('../database/mongo.index.js')
 
 app.use(bodyParser.json());
 
@@ -18,7 +17,7 @@ app.use('/books/:id', express.static(path.join(__dirname, '../public')));
 app.get('/books/:id/authors/title', async (req, res) => {
     console.log('server/index line 16')
   var booksId = req.params.id
-  var book =  await mongo.getBooks(booksId)
+  var book =  await pg.getBooks(booksId)
   res.status(200).json(book)
 
 });
@@ -26,7 +25,7 @@ app.get('/books/:id/authors/title', async (req, res) => {
 app.get('/books/:id/authors/:id', async (req, res) => {
   console.log('server/index line 21')
   var authorId = req.params.id
-  const author = await mongo.getAuthor(authorId);
+  const author = await pg.getAuthor(authorId);
   res.json(author);
 });
 
@@ -34,8 +33,7 @@ app.get('/books/:id/authors/:id', async (req, res) => {
 
 app.get('/books/:id/authors/:id/titles', async (req, res) => {
   var authorId = req.params.id
-  const books = await mongo.getAuthorTitles
-
+  const books = await pg.getAuthorTitles
   (authorId);
   res.json(books);
 });
@@ -44,7 +42,7 @@ app.get('/books/:id/authors/:id/titles', async (req, res) => {
 app.post('/books/:id/authors/status', async (req, res) => {
   var bookStatus = req.body.status;
   var booksId = req.body.id
-  const status = await mongo.updateStatus
+  const status = await pg.updateStatus
   (bookStatus, booksId);
   res.send(status);
 });
