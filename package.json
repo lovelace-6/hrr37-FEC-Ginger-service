@@ -14,10 +14,11 @@
     "start:dev": "nodemon server/index.js",
     "build": "webpack --watch --config ./webpack.config.js --mode development",
     "seed": "mysql -u root < schema.sql && node database/seed.js",
-    "psql:seed": "node database/psql.seed.js && psql -U postgres <psql.schema.sql && rm BooksData.csv && rm AuthorData.csv",
-    "psql:schema": "psql -U postgres < psql.schema.sql"
+    "psql:seed": "node database/psql.seed.js && psql -U postgres <psql.schema.sql && rm BooksData.csv AuthorData.csv",
+    "psql:schema": "psql -U postgres < psql.schema.sql",
+    "mongo:importauthors": "mongoimport -d bookshelf -c authors --type csv --file AuthorsData.csv --headerline",
+    "mongo:importbooks": "mongoimport -d bookshelf -c books --type csv --file BooksData.csv --headerline"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hrr37-hermes-4/hrr37-FEC-Ginger-service.git"
@@ -60,6 +61,8 @@
     "fast-csv": "^2.4.1",
     "jquery": "^3.3.1",
     "knex": "^0.16.5",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.2",
     "mysql": "^2.16.0",
     "pg": "^7.10.0",
     "react": "^16.8.6",

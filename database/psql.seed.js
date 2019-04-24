@@ -4,9 +4,10 @@ const fs = require('fs');
 const data = require('../database/dummy_data.js')
 
 
-const generateBooks = () =>{
-  
+const generateBooks = (id) =>{
+//note to self, added booksID field for mongodb to avoid using objectID
   var books = {
+    booksID: id,
     title: data.title(),
     description: data.description(),
     author_id: data.author_id({min:1, max:1000000}),
@@ -17,9 +18,11 @@ const generateBooks = () =>{
     return books
 }
 
-const generateAuthor = () => {
- 
+//added authorID for mongodb specific use case
+const generateAuthor = (id) => {
+
  var authors = {
+    authorsID: id,
     name: data.name(),
     details: data.details(),
     profile_pic: data.profilePic(),
@@ -29,7 +32,7 @@ const generateAuthor = () => {
 }
 
 
-//Writing CSV file 
+Writing CSV file
 var csvStream = csv.createWriteStream({headers: true})
 var writableStream = fs.createWriteStream("BooksData.csv");
 
@@ -41,16 +44,17 @@ csvStream.pipe(writableStream);
 csvStream.on('drain', function() {
   writeBooks();
 });
-var i =10000000;
+
+var numOfBooks = 1;
 
 function writeBooks(){
 
-while( i>0){
-if(!csvStream.write(generateBooks())){
-  i--
+while( numOfBooks<10000001){
+if(!csvStream.write(generateBooks(numOfBooks))){
+  numOfBooks++
   return
   }
-i--
+numOfBooks++
 }
 var end = new Date() - start
 console.log('time required to generate CSV',end, 'ms')
@@ -73,16 +77,16 @@ csvStreamAuthors.pipe(writableStreamAuthors);
 csvStreamAuthors.on('drain', function() {
   writeAuthors();
 });
-var numOfAuthors =1000000;
+var numOfAuthors =1;
 
 function writeAuthors(){
 
-while( numOfAuthors>0){
-if(!csvStreamAuthors.write(generateAuthor())){
-  numOfAuthors--
+while( numOfAuthors<1000001){
+if(!csvStreamAuthors.write(generateAuthor(numOfAuthors))){
+  numOfAuthors++
   return
   }
-numOfAuthors--
+numOfAuthors++
 }
 var endAuthors = new Date() - startAuthors
 console.log('time required to generate CSV',endAuthors, 'ms')
