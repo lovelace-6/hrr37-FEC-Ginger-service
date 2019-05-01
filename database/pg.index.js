@@ -1,14 +1,14 @@
 //USING PG DRIVER
 const Pool = require('pg').Pool
+const pw = require ('./pg.config.js')
 
 const pool = new Pool({
   user: 'postgres',
   host:'localhost',
   database: 'bookshelf',
-  password: 'altias',
+  password: pw.password,
   port: 5432,
 })
-
 
 var getBooks = async(id) => {
   console.log('pg received')
