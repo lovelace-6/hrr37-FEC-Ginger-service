@@ -5,3 +5,6 @@ knexfile.js
 AuthorsData.csv
 BooksData.csv
 client/public/bundle.js
+newrelic.js
+pg.config.js
+newrelic_agent.log
