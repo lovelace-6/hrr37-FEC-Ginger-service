@@ -1,11 +1,11 @@
+const nr = require('newrelic');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 9000
 const path = require('path');
 const bodyParser = require('body-parser');
-const pg = require('../database/pg.index.js')
-const data = require('../database/dummy_data.js')
-
+const pg = require('../database/pg.index.js');
+const data = require('../database/dummy_data.js');
 // const mongo = require('../database/mongo.index.js')
 
 app.use(bodyParser.json());
@@ -40,15 +40,17 @@ app.get('/books/:id/authors/:id/titles', async (req, res) => {
   res.json(books);
 });
 
-//EXTENDING CRUD OPERATIONS TO ADD AND DELTE
+
 app.post('/books/:id/authors/status', async (req, res) => {
   var bookStatus = req.body.status;
+  console.log(bookStatus)
   var booksId = req.body.id
   const status = await pg.updateStatus
   (bookStatus, booksId);
   res.send(status);
 });
 
+//EXTENDING CRUD OPERATIONS TO ADD AND DELTE
 app.post('/books/:id/addBook', async (req,res)=>{
   console.log('added request triggered')
   var value = {
