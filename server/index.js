@@ -8,13 +8,31 @@ const pg = require('../database/pg.index.js');
 const data = require('../database/dummy_data.js');
 // const mongo = require('../database/mongo.index.js')
 
+app.get('*.js', function (req, res, next) {
+  console.log('this')
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+
+  app.get('*.css', function(req, res, next) {
+    req.url = req.url + '.gz'
+    res.set('Content-Encoding', 'gzip')
+    res.set('Content-Type', 'text/css')
+    next()
+  })
+
+
 app.use(bodyParser.json());
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+});
 app.use('/books/:id', express.static(path.join(__dirname, '../public')));
 
 //USING POSTGRES
+
+
 
 app.get('/loaderio-1dd6247bf885e951b0aaa0b8236be432/',(req,res)=>{
   console.log('verification path hit')
