@@ -1,12 +1,12 @@
 //USING PG DRIVER
 const Pool = require('pg').Pool
-const pw = require ('./pg.config.js')
+const config = require ('./pg.config.js')
 
 const pool = new Pool({
-  user: 'postgres',
-  host:'localhost',
+  user: config.user,
+  host: config.host,
   database: 'bookshelf',
-  password: pw.password,
+  password: config.password,
   port: 5432,
 })
 
