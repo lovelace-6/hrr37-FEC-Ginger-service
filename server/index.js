@@ -16,6 +16,12 @@ app.use('/books/:id', express.static(path.join(__dirname, '../public')));
 
 //USING POSTGRES
 
+app.get('/loaderio-1dd6247bf885e951b0aaa0b8236be432',(req,res)=>{
+  var filePath = '/loaderio-1dd6247bf885e951b0aaa0b8236be432.txt'
+  res.sendFile(filePath)
+
+})
+
 app.get('/books/:id/authors/title', async (req, res) => {
     console.log('server/index line 16')
   var booksId = req.params.id
