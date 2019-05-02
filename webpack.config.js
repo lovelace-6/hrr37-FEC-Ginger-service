@@ -1,3 +1,6 @@
+const CompressionPlugin = require('compression-webpack-plugin');
+
+
 module.exports = {
   entry: `${__dirname}/client/src/index.jsx`,
 
@@ -5,6 +8,7 @@ module.exports = {
     filename: 'bundle-author.js',
     path: `${__dirname}/public`,
   },
+
 
   module: {
     rules: [
@@ -39,4 +43,12 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new CompressionPlugin({
+
+    })
+  ]
+
+
 };
