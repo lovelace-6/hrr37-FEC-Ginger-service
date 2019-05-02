@@ -8,9 +8,9 @@ const pg = require('../database/pg.index.js');
 const data = require('../database/dummy_data.js');
 // const mongo = require('../database/mongo.index.js')
 
-app.get('*.js', function (req, res, next) {
+app.get('*.gz', function (req, res, next) {
   console.log('here',req.url)
-  req.url = req.url + '.gz';
+  //req.url = req.url + '.gz';
   res.set('Content-Encoding', 'gzip');
   next();
 });
