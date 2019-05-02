@@ -18,7 +18,7 @@
     "psql:schema": "psql -U postgres < psql.schema.sql",
     "mongo:importauthors": "mongoimport -d bookshelf -c authors --type csv --file AuthorsData.csv --headerline",
     "mongo:importbooks": "mongoimport -d bookshelf -c books --type csv --file BooksData.csv --headerline",
-    "authorcsv":"node database/psql.seed.js"
+    "authorcsv": "node database/psql.seed.js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
+    "compression-webpack-plugin": "^2.0.0",
     "css-loader": "^2.1.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
