@@ -16,8 +16,9 @@ app.use('/books/:id', express.static(path.join(__dirname, '../public')));
 
 //USING POSTGRES
 
-app.get('/loaderio-1dd6247bf885e951b0aaa0b8236be432',(req,res)=>{
-  var filePath = path.join(__dirname, '../loaderio-1dd6247bf885e951b0aaa0b8236be432.txt')
+app.get('/loaderio-1dd6247bf885e951b0aaa0b8236be432/',(req,res)=>{
+  console.log('verification path hit')
+  var filePath = '../loaderio-1dd6247bf885e951b0aaa0b8236be432.txt'
   res.sendFile(filePath)
 
 })
