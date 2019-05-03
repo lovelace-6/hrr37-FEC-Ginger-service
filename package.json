@@ -73,6 +73,7 @@
     "react-router-dom": "^5.0.0",
     "react-star-rating-component": "^1.4.1",
     "react-star-ratings": "^2.3.0",
+    "redis": "^2.8.0",
     "styled-components": "^4.2.0",
     "writer": "^1.0.0"
   }
