@@ -8,16 +8,6 @@ const pg = require('../database/pg.index.js');
 const data = require('../database/dummy_data.js');
 // const mongo = require('../database/mongo.index.js')
 
-const redis = require('redis');
-const client = redis.createClient();
-const {promisify} = require('util');
-const getAsync = promisify(client.get).bind(client);
-
-
-
-client.on('error',(err) => {
-  console.log('err',err)
-})
 
 app.get('*.gz', function (req, res, next) {
   console.log('here',req.url)
@@ -45,23 +35,9 @@ app.get('/loaderio-1dd6247bf885e951b0aaa0b8236be432/',(req,res)=>{
 
 app.get('/books/:id/authors/title', async (req, res) => {
     console.log('server/index line 16')
-    var booksId = req.params.id
-  const redisBookId = booksId
-
-  var cacheBook = await getAsync(redisBookId)
-
-  if(!cacheBook){
-
-    var book =  await pg.getBooks(booksId)
-    res.status(200).json(book)
-    client.setex(redisBookId,3600,JSON.stringify(book))
-  } else {
-
-    res.json(JSON.parse(cacheBook))
-  }
-
-
-
+  var booksId = req.params.id
+  var book =  await pg.getBooks(booksId)
+  res.status(200).json(book)
 
 });
 
@@ -75,29 +51,10 @@ app.get('/books/:id/authors/:id', async (req, res) => {
 
 
 app.get('/books/:id/authors/:id/titles', async (req, res) => {
-
   var authorId = req.params.id
-  var redisAuthorId = authorId
-
-  var cacheAuthorItem = await getAsync(redisAuthorId);
-
-  console.log(cacheAuthorItem)
-  if(!cacheAuthorItem){
-
-    const books = await pg.getAuthorTitles
-    (authorId);
-
-    res.json(books);
-    client.setex(redisAuthorId,3600,JSON.stringify(books))
-  } else {
-
-
-    res.json(JSON.parse(cacheAuthorItem))
-  }
-
-
-
-
+  const books = await pg.getAuthorTitles
+  (authorId);
+  res.json(books);
 });
 
 
