@@ -11,7 +11,13 @@ const data = require('../database/dummy_data.js');
 // const mongo = require('../database/mongo.index.js')
 
 const redis = require('redis');
-const client = redis.createClient();
+const client = redis.createClient({
+
+port: 6379,
+host:'ec2-13-59-78-229.us-east-2.compute.amazonaws.com'
+
+
+});
 const {promisify} = require('util');
 const getAsync = promisify(client.get).bind(client);
 
