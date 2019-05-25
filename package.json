@@ -58,7 +58,9 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "csv": "^5.1.1",
+    "express": "^4.17.0",
     "faker": "^4.1.0",
     "fast-csv": "^2.4.1",
     "jquery": "^3.3.1",
