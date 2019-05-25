@@ -13,5 +13,5 @@ const status = 'Want to Read';
 
 
 module.exports = {
-  name, details, title, description, year, author_id, cover, status, profilePic, followers
+  name, details, title, description, year, author_id, cover, status, profilePic, followers,
 };

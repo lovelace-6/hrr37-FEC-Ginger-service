@@ -1,18 +1,17 @@
 const express = require('express');
+
 const app = express();
 const port = 3000;
 const path = require('path');
 const bodyParser = require('body-parser');
-const db = require('../database/index.js');
+const db = require('../database/secondaryDBs/index.js/index.js');
 
 app.use(bodyParser.json());
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/books/:id', express.static(path.join(__dirname, '../public')));
 
 app.get('/books/:id/authors/:id', async (req, res) => {
-  console.log('server/index line 21')
   const author = await db.getAuthor(req.params.id);
   res.json(author);
 });

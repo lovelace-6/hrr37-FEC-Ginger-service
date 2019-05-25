@@ -1,21 +1,19 @@
 import React from 'react';
 import style from './css/Author.less';
-import Books from '../components/Books.jsx';
+import Books from './Books.jsx';
 
 class Author extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      authors: []
+      authors: [],
     };
   }
 
   componentDidMount() {
-console.log('author line 14')
     fetch(`/books/${this.props.bookId}/authors/title`)
       .then(res => res.json())
       .then((title) => {
-
         return fetch(`/books/${this.props.bookId}/authors/${title[0].author_id}`)
       })
       .then(res => res.json())
@@ -23,11 +21,8 @@ console.log('author line 14')
         console.log(data)
         this.state.authors.push(data)
         this.setState({
-          authors:this.state.authors
-        })
-      //   this.setState({
-      //     authors: ['hi']
-      // });
+          authors: this.state.authors
+        });
     });
 console.log('line 28')
   }

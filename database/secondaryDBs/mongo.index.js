@@ -1,14 +1,12 @@
-//USING NATIVE MONGODB DRIVER
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/bookshelf";
-var bookshelf;
+/* eslint-disable prefer-destructuring */
+const MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect(url,function(err,client){
-    console.log('connected');
-    bookshelf= client.db('bookshelf')
+const url = 'mongodb://localhost:27017/bookshelf';
+let bookshelf;
 
-  }
-)
+MongoClient.connect(url, (err, client) =>     bookshelf= client.db('bookshelf')
+  },
+);
 
 var getBooks =  async (booksId)=>{
 

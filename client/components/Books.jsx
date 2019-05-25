@@ -11,11 +11,10 @@ class Books extends React.Component {
     this.toolTipTimeout = null;
     this.state = {
       books: [],
-      bookId: null
+      bookId: null,
     }
   }
   getBooks() {
-    console.log('running!')
     fetch(`/books/${this.props.bookId}/authors/${this.props.authorId}/titles`)
       .then(res => res.json())
       .then((data) => {

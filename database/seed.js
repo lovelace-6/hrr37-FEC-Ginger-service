@@ -1,4 +1,4 @@
-const db = require('./index.js');
+const db = require('./secondaryDBs/index.js/index.js');
 const data = require('../database/dummy_data.js');
 
 const createBook = () => {
